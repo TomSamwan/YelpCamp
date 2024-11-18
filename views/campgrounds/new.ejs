@@ -1,0 +1,57 @@
+<% layout('./layouts/boilerplate') %>
+
+<div class="back-button-container">
+  <a class="back-button" href="" onclick="window.history.back()">
+    < Go Back</a>
+</div>
+
+<div class="grid-content-container">
+
+  <article class="new-container">
+
+    <form id="new-form" class="post-details" action="/campgrounds" method="POST" enctype="multipart/form-data">
+
+      <div class="input-container">
+        <label class="label" for="title-input">Title</label><br>
+        <input id="title-input" class="form-input" type="text" name="campground[title]" placeholder="Title" required>
+      </div>
+
+      <div class="input-container">
+        <label class="label" for="location-input">Location</label><br>
+        <input id="location-input" class="form-input" type="text" name="campground[location]" placeholder="Location"
+          required>
+      </div>
+
+      <div class="input-container">
+        <label class="label" for="decription-input">Description</label><br>
+        <textarea id="description-input" class="form-input" name="campground[description]"
+          placeholder="Please enter a description" required></textarea>
+      </div>
+
+      <div class="input-container">
+        <label class="label" for="price-input">Price</label><br>
+        <div class="form-input price-span">
+          <span class="prefix">£</span>
+          <input id="price-input" type="number" step="any" name="campground[price]" placeholder="Price / night"
+            required>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="post-image-container upload-image-container">
+      <h3 class="upload-title">Upload image/s here!</h3>
+      <div class="upload-button-container">
+        <span>--></span>
+        <label class="upload-button" for="image">Browse</label>
+        <span><--</span>
+      </div>
+      <input type="file" name="image" id="image" form="new-form" style="display: none;" multiple>
+    </div>
+
+
+    <button form="new-form" class="save-button ts-button"><em>Create Campground</em></button>
+
+  </article>
+
+</div>

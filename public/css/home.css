@@ -1,0 +1,47 @@
+body {
+  height: 100vh;
+  background: var(--bg-purple-darker);
+}
+
+.navbar {
+  justify-content: space-between;
+  background: var(--bg-purple);
+  box-shadow: 0 10px 8px -5px hsl(240, 23%, 30%, 0.5);
+  }
+  .navbar h1 {
+  color: var(--offwhite);
+  }
+
+.ts-button {
+  color: var(--bg-purple-focus);
+  background: var(--offwhite);
+  box-shadow: 0 10px 8px -5px hsl(240, 23%, 30%, 0.5);
+}
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--offwhite);
+  height: 100%;
+}
+
+.home-layout {
+  text-align: center;
+  max-width: 500px;
+  
+}
+
+.hero-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.hero-message {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.home-layout .ts-button {
+  font-size: 2rem;
+  padding: 10px 20px;
+}

@@ -1,0 +1,17 @@
+<% if(success && success.length) { %>
+  <div class="flash-msg-container">
+    <div class="flash-msg flash-success">
+      <%= success %>
+      <div onclick="dismiss()">❌</div>
+    </div>
+  </div>
+<% } %>
+
+<% if(error && error.length) { %>
+  <div class="flash-msg-container">
+    <div class="flash-msg flash-error">
+      <%= error %>
+      <div onclick="dismiss()">❌</div>
+    </div>
+  </div>
+<% } %>
