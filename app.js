@@ -47,9 +47,9 @@ app.use(mongoSanitize()); // adds security to injected query string accessing mo
 
 const store = MongoDBStore.create({
   mongoUrl: dbUrl,
-  crypto: 'megthedog',
-  touchAfter: 24 * 3600
-})
+  touchAfter: 24 * 3600,
+  crypto: { secret: 'megthedog' }
+});
 
 store.on("error", function(e) {
   console.log("ERROR:", e)

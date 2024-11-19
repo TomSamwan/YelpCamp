@@ -78,10 +78,13 @@ map.on('load', function () {
     map.scrollZoom.enable();
   })
   
+
+
   window.addEventListener("click", (e) => {
-    if (e.target !== activateOverlay) {
-      activateOverlay.style.display = "flex"
-      map.scrollZoom.disable();
+    if (e.target !== document.querySelector('.cluster-map-container')) {
+      console.log("yes!")
+      // activateOverlay.style.display = "flex"
+      // map.scrollZoom.disable();
     }
   })
 
