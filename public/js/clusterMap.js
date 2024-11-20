@@ -73,20 +73,21 @@ map.on('load', function () {
     }
   });
 
-  activateOverlay.addEventListener('click', () => {
-    activateOverlay.style.display = "none";
-    map.scrollZoom.enable();
-  })
-  
+  const mapElement = document.getElementsByTagName('canvas')[0];
+  const mapParentContainer = document.querySelector('.cluster-map-container');
+  const elementArray = [...mapParentContainer.children];
+  console.log(elementArray);
 
-
-  window.addEventListener("click", (e) => {
-    if (e.target !== document.querySelector('.cluster-map-container')) {
-      console.log("yes!")
-      // activateOverlay.style.display = "flex"
-      // map.scrollZoom.disable();
+  window.addEventListener('mousedown', (e) => {
+    if (e.target === activateOverlay) {
+      activateOverlay.style.display = "none";
+      map.scrollZoom.enable();
+    } else if (e.target !== mapElement && window.getComputedStyle(activateOverlay).getPropertyValue("display") === "none") {
+      activateOverlay.style.display = "flex";
+      map.scrollZoom.disable();
     }
   })
+
 
   // inspect a cluster on click
   map.on('click', 'clusters', async (e) => {
