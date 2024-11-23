@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: calc(100vh - 80px);
   background: var(--bg-purple-darker);
 }
 

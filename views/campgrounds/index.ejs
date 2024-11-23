@@ -2,7 +2,7 @@
 
 <div class="cluster-map-container">
   <div id="cluster-map"></div>
-  <div class="activate-overlay">click to active</div>
+  <div class="activate-overlay">click to activate</div>
 </div>
 
 <section class="grid-content-container">
@@ -13,28 +13,32 @@
 
   <ul class="card-container">
     <% for(let campground of campgrounds) { %>
-      <a class="card-anchor" href="/campgrounds/<%= campground._id %>">
-        <li class="card">
-          <figure class="card-image-container">
-            <% if(campground.images[0].url) { %>
-              <img class="card-image" src="<%= campground.images[0].url %>" alt="">
-            <% } %>
-          </figure>
-          <div class="card-content">
-            <h2><%= campground.title %></h2>
-            <p><%= campground.description %></p><br>
-            <p>£<%= campground.price %> per night</p>
-          </div>
-        </li>
-      </a>
+    <a class="card-anchor" href="/campgrounds/<%= campground._id %>">
+      <li class="card">
+        <figure class="card-image-container">
+          <% if(campground.images[0].url) { %>
+          <img
+            class="card-image"
+            src="<%= campground.images[0].url %>"
+            alt=""
+          />
+          <% } %>
+        </figure>
+        <div class="card-content">
+          <h2><%= campground.title %></h2>
+          <p><%= campground.description %></p>
+          <br />
+          <p>£<%= campground.price %> per night</p>
+        </div>
+      </li>
+    </a>
     <% } %>
   </ul>
 </section>
-
 
 <script>
   const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
   const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
 </script>
- 
+
 <script src="/js/clusterMap.js"></script>

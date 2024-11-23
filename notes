@@ -1,9 +1,11 @@
 ( CRITICAL )
 
 INDEX PAGE
-- CLUSTER MAP - when selecting campsite or using manual map controls, keep the map active (keep the activate-overlay hidden)
+# CLUSTER & SINGLE MAP - when selecting campsite or using manual map controls, keep the map active (keep the activate-overlay hidden)
+- MAPS - fix scroll when hovering over popover
+- SHOW PAGE MAP - activate overlay when clicking outside of the map to the left or right
 
-- fix the flash message dismiss button
+# fix the flash message dismiss button
 
 
 ( IMPORTANT )
@@ -31,8 +33,7 @@ HOME PAGE
 OTHERS
 - style the boilerplate header and footer a bit nicer. i.e. change colours and button styling
 
-
-
+# fixed some inline script errors by putting the functions in the script.js files
 
 
 
