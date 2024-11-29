@@ -24,6 +24,8 @@ body {
     "Lucida Sans", Arial, sans-serif;
   font-weight: 700;
   background: hsl(36, 100%, 91%);
+
+  min-height: calc(100vh - 205px);
 }
 
 h1,
@@ -39,7 +41,7 @@ span {
 }
 
 input[type="text"].form-input,
-input[type="number"].form-input,
+input[type="number"],
 .price-span,
 textarea.form-input {
   border: none;
@@ -53,11 +55,11 @@ textarea.form-input {
 
 @keyframes buttonPress {
   from {
-    bottom: 2px;
-    box-shadow: 0 4px 1px -2px hsl(36, 30%, 40%, 0.5);
+    bottom: -1px;
+    box-shadow: 0 1px 1px -2px hsl(240, 23%, 30%, 0.5);
   }
   to {
-    bottom: 0;
+    bottom: -2px;
     box-shadow: 0 0 #0000;
   }
 }
@@ -71,19 +73,43 @@ header {
 
 .navbar {
   height: 80px;
-  background: var(--bg-orange-light);
+  color: var(--offwhite);
+  background: var(--bg-purple);
+  box-shadow: 0 10px 8px -5px hsl(240, 23%, 30%, 0.5);
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  box-shadow: 0 10px 8px -5px hsl(36, 10%, 40%, 0.5);
 }
 
 .navbar ul {
   display: flex;
+  justify-content: space-around;
 }
 .navbar li {
   list-style: none;
+}
+
+.nav-links {
+  align-items: center;
+}
+
+.nav-title {
+  padding-right: 20px;
+  color: var(--offwhite);
+  text-decoration: none;
+}
+
+.nav-button {
+  color: var(--offwhite);
+  font-size: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.25rem;
+  text-decoration: none;
+}
+
+.nav-button:hover {
+  text-decoration: underline solid 3px var(--orange);
 }
 
 .ts-button {
@@ -91,19 +117,19 @@ header {
   font-size: 1.25rem;
   letter-spacing: -1px;
   text-decoration: none;
-  color: var(--offwhite);
+  color: var(--bg-purple-focus);
+  background: var(--offwhite);
+  box-shadow: 0 1px 1px -2px hsl(240, 23%, 30%, 0.5);
   font-weight: 600;
 
   /* layout */
   margin: 5px 10px;
-  background: var(--orange);
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 4px 10px 6px;
 
   /* positioning */
   position: relative;
-  bottom: 2px;
-  box-shadow: 0 4px 1px -2px hsl(36, 30%, 40%, 0.5);
+  bottom: -1px;
 }
 
 .ts-button:active {
@@ -112,46 +138,48 @@ header {
 
 /* footer styling  */
 footer {
-  justify-self: flex-end;
-}
-
-.f-navbar ul {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr minmax(440px, 8fr) 1fr;
+  background: var(--bg-purple);
+  padding: 1rem 0;
 }
 
 .f-navbar {
-  height: 70px;
-  background: var(--bg-orange-light);
-  display: flex;
+  grid-area: 1/2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: left;
+  justify-items: center;
   align-items: center;
-  padding: 50px 20px;
 }
 
-.f-navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.f-navbar span {
-  font-size: 1.5rem;
-  color: var(--text-purple);
+.f-title {
+  font-size: 1rem;
+  color: var(--offwhite);
+  text-decoration: none;
 }
 
 .f-navbar ul {
+  display: flex;
+  flex-direction: column;
   list-style: none;
 }
 
-.f-navbar a {
-  text-decoration: none;
-  font-size: 1.125rem;
+.f-navbar ul li {
+  padding: 0.25rem 0;
 }
 
 /* main content container layout  */
-main {
+/* main {
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr minmax(550px, 10fr) 1fr;
+} */
+
+.grid-content-container {
+  /* grid-area: 2/2; */
+  display: grid;
+  grid-template-rows: auto auto;
   grid-template-columns: 1fr minmax(550px, 10fr) 1fr;
 }
 
@@ -183,13 +211,12 @@ main {
   color: hsl(36, 100%, 94%);
   text-shadow: 0 0 20px hsl(240, 23%, 17%);
   background: #0005;
-}
-
-.grid-content-container {
-  grid-area: 2/2;
+  cursor: pointer;
 }
 
 .page-title-container {
+  grid-area: 1/2;
+
   margin: 64px 0 32px;
   justify-self: left;
 }
@@ -258,6 +285,11 @@ main {
   grid-area: 1/2;
 
   margin: 24px 0 12px;
+}
+
+.page-content {
+  grid-area: 2/2;
+  min-height: calc(100vh - 205px);
 }
 
 .post-container {
@@ -397,6 +429,7 @@ main {
 }
 
 .delete-button {
+  color: var(--offwhite);
   background: hsl(0, 70%, 45%);
   box-shadow: 0 4px 1px -2px hsl(0, 70%, 45%, 0.5);
   font-weight: 600;
@@ -416,7 +449,7 @@ button {
   grid-area: map;
   position: relative;
   height: 400px;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
 }
 
 #single-map {
@@ -450,12 +483,12 @@ button {
     "details  buttons " auto / 1fr auto;
   background: var(--bg-purple);
   color: var(--offwhite);
-  margin-bottom: 32px;
   padding: 16px 0 16px 32px;
+  margin-bottom: 3rem;
 }
 
 .input-container {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 label {
@@ -533,7 +566,7 @@ div.price-span.active {
 
 .upload-title {
   font-size: 2rem;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .upload-button-container {
@@ -548,24 +581,43 @@ div.price-span.active {
 }
 
 .post-image-container {
-  padding: 0 32px;
+  padding: 0 2rem;
 }
 
 .delete-images-container {
   display: grid;
-  grid-template-rows: 1fr auto;
+  margin-bottom: 3rem;
+}
+
+.delete-images-title-container {
+  color: var(--offwhite);
+  margin-bottom: 2rem;
+}
+
+.delete-title,
+.delete-message {
+  background: var(--bg-purple-darker);
+  box-shadow: 0 0 0 4px var(--bg-purple-darker);
+  padding: 0.5rem 1rem;
+}
+
+.delete-title {
+  font-size: 1.75rem;
+}
+
+.delete-message {
+  font-size: 1.25rem;
 }
 
 .delete-images {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
-  grid-auto-rows: 200px;
-  object-fit: contain;
-  height: 200px;
-}
-
-.delete-message {
-  margin-bottom: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: auto;
+  justify-content: left;
+  justify-items: center;
+  align-items: center;
+  background: var(--bg-purple);
+  padding: 0.5rem;
 }
 
 .delete-image {
@@ -573,13 +625,17 @@ div.price-span.active {
 }
 
 .delete-image:hover::before {
-  width: 100%;
-  height: 100%;
-  display: block;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
   position: absolute;
   inset: 0;
   content: "";
   background: rgba(0, 0, 0, 0.4);
+}
+
+.delete-image-input {
+  display: none;
 }
 
 .delete-image-input:checked + .delete-image {
@@ -589,6 +645,8 @@ div.price-span.active {
 .delete-image-input:checked + .delete-image::before {
   display: flex;
   position: absolute;
+  width: 200px;
+  height: 200px;
   inset: 0;
   content: "X";
   justify-content: center;
@@ -661,28 +719,47 @@ div.price-span.active {
 
 /* flash message styling */
 .flash-msg-container {
-  background: var(--bg-purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 60px;
+  position: relative;
+  background: var(--bg-purple-darker);
+}
+
+.flash-msg-container::before {
+  width: 0;
+  content: "";
+  position: absolute;
+  border-radius: 30px;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.flash-msg-container:hover::before {
+  width: 100%;
+  border-radius: 0;
+  background: var(--bg-purple-focus);
 }
 
 .flash-msg {
   display: flex;
-  justify-content: space-between;
-  margin: 0 20vw;
-  padding: 20px 20px;
+  position: relative;
+  z-index: 99;
 }
 
-.flash-msg div:hover {
+.flash-msg:hover,
+.flash-dismiss:hover {
   cursor: pointer;
 }
 
 .flash-success {
   color: hsl(36, 100%, 84%);
-  background: rgba(0, 0, 0, 0.1);
 }
 
 .flash-error {
   color: var(--bg-orange-light);
-  background: var(--bg-purple-focus);
 }
 
 /* register & login */

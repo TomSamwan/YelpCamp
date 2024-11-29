@@ -15,13 +15,26 @@ new maptilersdk.Marker()
   )
   .addTo(map);
 
-const singleMap = document.querySelector("#single-map");
+// Activate & Deactivate map overlay/controls
 const mapOverlay = document.querySelector(".show-map-activate-overlay");
+let elements = document.querySelectorAll(".show-map-container *");
+let mapElements = [];
+const scan = () => {
+  elements = document.querySelectorAll(".show-map-container *");
+  return elements;
+};
 
 window.addEventListener("mousedown", (e) => {
   if (e.target === mapOverlay) {
     mapOverlay.style.display = "none";
-  } else if (!e.target.getAttribute("class").includes("maplibregl")) {
+  }
+  if (elements.length < 52) {
+    scan();
+    mapElements = [];
+    elements.forEach((e) => {
+      mapElements.push(e);
+    });
+  } else if (!mapElements.includes(e.target)) {
     mapOverlay.style.display = "flex";
   }
 });

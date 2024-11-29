@@ -1,21 +1,25 @@
 body {
-  height: calc(100vh - 80px);
-  background: var(--bg-purple-darker);
+  height: calc(100vh);
+  background: hsla(240, 23%, 57%, 0);
+  
+  background-image: url('https://res.cloudinary.com/dmbtvzmaz/image/upload/v1732894638/scott-goodwill-y8Ngwq34_Ak-unsplash_nbxdlq.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
-.navbar {
-  justify-content: space-between;
-  background: var(--bg-purple);
-  box-shadow: 0 10px 8px -5px hsl(240, 23%, 30%, 0.5);
-  }
-  .navbar h1 {
-  color: var(--offwhite);
-  }
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(12px);
+  filter: brightness(0.3);
+}
 
-.ts-button {
-  color: var(--bg-purple-focus);
-  background: var(--offwhite);
-  box-shadow: 0 10px 8px -5px hsl(240, 23%, 30%, 0.5);
+.home-navbar {
+  background: none;
+  box-shadow: none;
 }
 
 .home-container {
@@ -23,13 +27,14 @@ body {
   justify-content: center;
   align-items: center;
   color: var(--offwhite);
-  height: 100%;
+  height: calc(100vh - 80px);
+  position: relative;
 }
 
 .home-layout {
   text-align: center;
   max-width: 500px;
-  
+  position: absolute;
 }
 
 .hero-title {

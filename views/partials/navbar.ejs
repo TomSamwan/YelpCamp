@@ -1,17 +1,16 @@
 <nav class="navbar">
-  <div style="width: 100%; display: flex; justify-content: space-between">
-    <ul>
-      <li><a class="ts-button" href="/">Home</a></li>
-      <li><a class="ts-button" href="/campgrounds">All Campgrounds</a></li>
-      <li><a class="ts-button" href="/campgrounds/new">New Campground</a></li>
-    </ul>
-    <ul>
-      <% if(!currentUser) { %>
-        <li><a class="ts-button" href="/login">login</a></li>
-        <li><a class="ts-button" href="/register">register</a></li>
-      <% } else { %>
-        <li><a class="ts-button" href="/logout">logout</a></li>
-      <% } %>
-    </ul>
-  </div>
+  <ul class="nav-links">
+    <a class="nav-title" href="/"><h1>YELPCAMP</h1></a>
+    <li><a class="nav-button" href="/">Home</a></li>
+    <li><a class="nav-button" href="/campgrounds">All Campgrounds</a></li>
+    <li><a class="nav-button" href="/campgrounds/new">New Campground</a></li>
+  </ul>
+  <ul class="login-links">
+    <% if(!currentUser) { %>
+    <li><a class="ts-button" href="/login">login</a></li>
+    <li><a class="ts-button" href="/register">register</a></li>
+    <% } else { %>
+    <li><a class="ts-button" href="/logout">logout</a></li>
+    <% } %>
+  </ul>
 </nav>

@@ -1,45 +1,74 @@
 <% layout('./layouts/boilerplate') %>
 
 <div class="back-button-container">
-  <a class="back-button" href="" onclick="window.history.back()">
-    < Go Back</a>
+  <a class="back-button" href="">< Go Back</a>
 </div>
 
 <div class="grid-content-container">
-
   <article class="edit-container">
-
-    <form id="save-changes" class="post-details" action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" enctype="multipart/form-data">
-
+    <form
+      id="save-changes"
+      class="post-details"
+      action="/campgrounds/<%=campground._id%>?_method=PUT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <div class="input-container">
-        <label class="label" for="title-input">Title</label><br>
-        <input id="title-input" class="form-input" type="text" name="campground[title]"
-        placeholder="<%=campground.title%>" value="<%=campground.title%>" required>
+        <label class="label" for="title-input">Title</label><br />
+        <input
+          id="title-input"
+          class="form-input"
+          type="text"
+          name="campground[title]"
+          placeholder="<%=campground.title%>"
+          value="<%=campground.title%>"
+          required
+        />
       </div>
 
       <div class="input-container">
-        <label class="label" for="location-input">Location</label><br>
-        <input id="location-input" class="form-input" type="text" name="campground[location]"
-        placeholder="<%=campground.location%>" value="<%=campground.location%>" required>
+        <label class="label" for="location-input">Location</label><br />
+        <input
+          id="location-input"
+          class="form-input"
+          type="text"
+          name="campground[location]"
+          placeholder="<%=campground.location%>"
+          value="<%=campground.location%>"
+          required
+        />
       </div>
 
       <div class="input-container">
-        <label class="label" for="decription-input">Description</label><br>
-        <textarea id="description-input" class="form-input" name="campground[description]"
-        placeholder="<%=campground.description%>" value="<%=campground.description%>" required><%=campground.description%></textarea>
+        <label class="label" for="decription-input">Description</label><br />
+        <textarea
+          id="description-input"
+          class="form-input"
+          name="campground[description]"
+          placeholder="<%=campground.description%>"
+          value="<%=campground.description%>"
+          required
+        >
+<%=campground.description%></textarea
+        >
       </div>
 
       <div class="input-container">
-        <label class="label" for="price-input">Price</label><br>
+        <label class="label" for="price-input">Price</label><br />
         <div class="form-input price-span">
           <span class="prefix">£</span>
-          <input id="price-input" type="number" step="any" name="campground[price]"
-          value="<%=campground.price%>" placeholder="<%=campground.price%>" required>
+          <input
+            id="price-input"
+            type="number"
+            step="any"
+            name="campground[price]"
+            value="<%=campground.price%>"
+            placeholder="<%=campground.price%>"
+            required
+          />
         </div>
       </div>
-
     </form>
-
 
     <div class="post-image-container upload-image-container">
       <h3 class="upload-title">Upload image/s here!</h3>
@@ -48,22 +77,42 @@
         <label class="upload-button" for="image">Browse</label>
         <span><--</span>
       </div>
-      <input type="file" name="image" id="image" form="save-changes" style="display: none;" multiple>
+      <input
+        type="file"
+        name="image"
+        id="image"
+        form="save-changes"
+        style="display: none"
+        multiple
+      />
     </div>
 
-    
-    <button form="save-changes" class="save-button ts-button"><em>SAVE CHANGES</em></button>
-    
+    <button form="save-changes" class="save-button ts-button">
+      <em>SAVE CHANGES</em>
+    </button>
   </article>
 
   <div class="delete-images-container">
-    <h2 class="delete-message">Select images below to delete them from the campground!</h2>
+    <div class="delete-images-title-container">
+      <h2 class="delete-title">Delete images?</h2>
+      <p class="delete-message">
+        Select from the images below, then click "save changes" to confirm
+      </p>
+    </div>
     <div class="delete-images">
       <% campground.images.forEach(function(img, i) { %>
-        <input class="delete-image-input" style="display: none" form="save-changes" type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%= img.filename %>">
-        <label class="delete-image" for="image-<%=i%>"><img src="<%= img.thumbnail %>"></label>
+      <input
+        class="delete-image-input"
+        form="save-changes"
+        type="checkbox"
+        id="image-<%=i%>"
+        name="deleteImages[]"
+        value="<%= img.filename %>"
+      />
+      <label class="delete-image" for="image-<%=i%>"
+        ><img src="<%= img.thumbnail %>"
+      /></label>
       <% }) %>
     </div>
   </div>
-
 </div>

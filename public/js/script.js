@@ -3,9 +3,9 @@ const ta = document.querySelectorAll(".form-input").forEach((el) => {
     el.style.height = `${el.scrollHeight + 6}px`;
   });
 
-  el.addEventListener("input", function () {
-    this.style.height = "auto";
-    this.style.height = `${this.scrollHeight + 6}px`;
+  window.addEventListener("resize", function () {
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight + 6}px`;
   });
 
   el.addEventListener("input", function () {
@@ -52,20 +52,21 @@ if (inputPages.includes(slug)) {
 }
 
 // back button
-const prevPage = document.querySelector(".back-button");
-prevPage.addEventListener("click", () => {
-  window.history.back();
-});
+try {
+  const prevPage = document.querySelector(".back-button");
+  prevPage.addEventListener("click", () => {
+    window.history.back();
+  });
+} catch {}
 
 // flash messages
 
 const flashMsg = document.querySelector(".flash-msg");
-const flashDismiss = document.querySelector(".flash-dismiss");
-if (flashDismiss) {
-  flashDismiss.addEventListener("click", () => {
-    flashMsg.style.display = "none";
-  });
-}
+const flashMsgContainer = document.querySelector(".flash-msg-container");
+flashMsgContainer.addEventListener("click", () => {
+  flashMsg.style.display = "none";
+  flashMsgContainer.style.display = "none";
+});
 
 // Image carousel
 if (slug.length === 24) {

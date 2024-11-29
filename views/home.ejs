@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <title>Home</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/home.css">
-  <title>Home</title>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar">
-      <h1>YELPCAMP</h1>
-      <ul>
-        <% if(!currentUser) { %>
+  <body>
+    <header>
+      <nav class="navbar home-navbar">
+        <h1>YELPCAMP</h1>
+        <ul>
+          <% if(!currentUser) { %>
           <li><a class="ts-button" href="/login">login</a></li>
           <li><a class="ts-button" href="/register">register</a></li>
-        <% } else { %>
+          <% } else { %>
           <li><a class="ts-button" href="/logout">logout</a></li>
-        <% } %>
-      </ul>
-    </nav>
-  </header>
+          <% } %>
+        </ul>
+      </nav>
+    </header>
 
-  <section class="home-container">
-    <div class="home-layout">
-      <h2 class="hero-title" >Welcome to YelpCamp!</h2><br>
-      <p class="hero-message">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dignissimos explicabo non saepe recusandae
-        quae placeat odit
-      </p><br>
-      <a href="./campgrounds" class="ts-button">View All Campgrounds</a>
-    </div>
-  </section>
-</body>
-
+    <section class="home-container">
+      <div class="home-layout">
+        <h2 class="hero-title">Welcome to YelpCamp!</h2>
+        <br />
+        <p class="hero-message">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus dignissimos explicabo non saepe recusandae quae placeat
+          odit
+        </p>
+        <br />
+        <a href="./campgrounds" class="ts-button">View All Campgrounds</a>
+      </div>
+    </section>
+  </body>
 </html>

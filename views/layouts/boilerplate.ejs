@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YelpCamp</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YelpCamp</title>
+    <script
+      crossorigin="anonymous"
+      src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"
+    ></script>
+    <link
+      crossorigin="anonymous"
+      href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+  </head>
 
-  <script crossorigin="anonymous" src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"></script>
-  <link crossorigin="anonymous" href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  
-</head>
+  <body>
+    <header><%- include('../partials/navbar.ejs') %></header>
 
-<body>
+    <main><%- include('../partials/flash.ejs') %> <%- body %></main>
 
-  <header>
-    <%- include('../partials/navbar.ejs') %>
-  </header>
-  
-  <%- include('../partials/flash.ejs') %>
-  <main>
-    <%- body %>
-  </main>
+    <footer><%- include('../partials/footer.ejs') %></footer>
 
-  <footer>
-    <%- include('../partials/footer.ejs') %>
-  </footer>
-
-  <script src="/js/script.js"></script>
-  
-</body>
-
+    <script src="/js/script.js"></script>
+  </body>
 </html>

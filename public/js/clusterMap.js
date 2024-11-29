@@ -8,7 +8,6 @@ const map = new maptilersdk.Map({
 });
 
 map.on("load", function () {
-  map.scrollZoom.disable();
   map.addSource("campgrounds", {
     type: "geojson",
     data: campgrounds,
@@ -107,13 +106,40 @@ map.on("mouseleave", "clusters", () => {
   map.getCanvas().style.cursor = "";
 });
 
-const activateOverlay = document.querySelector(".activate-overlay");
+// Activate & Deactivate map overlay/controls
+const mapOverlay = document.querySelector(".activate-overlay");
+let elements = document.querySelectorAll(".cluster-map-container *");
+let mapElements = [];
+const scan = () => {
+  elements = document.querySelectorAll(".cluster-map-container *");
+  return elements;
+};
 
 window.addEventListener("mousedown", (e) => {
-  if (e.target === activateOverlay) {
-    activateOverlay.style.display = "none";
-    map.scrollZoom.enable();
-  } else if (!e.target.getAttribute("class").includes("maplibregl")) {
-    activateOverlay.style.display = "flex";
+  if (e.target === mapOverlay) {
+    mapOverlay.style.display = "none";
+  }
+  if (elements.length < 34) {
+    scan();
+    mapElements = [];
+    elements.forEach((e) => {
+      mapElements.push(e);
+    });
+  } else if (!mapElements.includes(e.target)) {
+    mapOverlay.style.display = "flex";
   }
 });
+
+
+// I THINK this also works? / old code
+
+// const activateOverlay = document.querySelector(".activate-overlay");
+
+// window.addEventListener("mousedown", (e) => {
+//   if (e.target === activateOverlay) {
+//     activateOverlay.style.display = "none";
+//     map.scrollZoom.enable();
+//   } else if (!e.target.getAttribute("class").includes("maplibregl")) {
+//     activateOverlay.style.display = "flex";
+//   }
+// });
