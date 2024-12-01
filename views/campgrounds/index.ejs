@@ -12,13 +12,33 @@
   </div>
 
   <ul class="card-container">
+    <% for(let campground of campgrounds) { %>
+      <% for(let i = 0; i < 5; i++) { %>
+    <a class="card-anchor" href="/campgrounds/<%= campground._id %>">
+      <li class="card">
+        <figure class="card-image-container">
+          <% if(campground.images[0].url) { %>
+          <img
+            class="card-image"
+            src="<%= campground.images[0].url %>"
+            alt=""
+          />
+          <% } %>
+        </figure>
+        <div class="card-content">
+          <h2><%= campground.title %></h2>
+          <p><%= campground.description %></p>
+          <br />
+          <p>£<%= campground.price %> per night</p>
+        </div>
+      </li>
+    </a>
+    <% } %>
+    <% } %>
 
-    
+    <button id="next-page">></button>
   </ul>
-  <button id="next-page">></button>
 </section>
-
-
 
 <script>
   const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
