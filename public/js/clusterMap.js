@@ -112,24 +112,20 @@ let elements = document.querySelectorAll(".cluster-map-container *");
 let mapElements = [];
 const scan = () => {
   elements = document.querySelectorAll(".cluster-map-container *");
-  return elements;
 };
 
 window.addEventListener("mousedown", (e) => {
+  scan();
+  mapElements = [];
+  elements.forEach((e) => {
+    mapElements.push(e);
+  });
   if (e.target === mapOverlay) {
     mapOverlay.style.display = "none";
-  }
-  if (elements.length < 34) {
-    scan();
-    mapElements = [];
-    elements.forEach((e) => {
-      mapElements.push(e);
-    });
   } else if (!mapElements.includes(e.target)) {
     mapOverlay.style.display = "flex";
   }
 });
-
 
 // I THINK this also works? / old code
 

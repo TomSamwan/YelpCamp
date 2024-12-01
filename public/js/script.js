@@ -61,12 +61,14 @@ try {
 
 // flash messages
 
-const flashMsg = document.querySelector(".flash-msg");
-const flashMsgContainer = document.querySelector(".flash-msg-container");
-flashMsgContainer.addEventListener("click", () => {
-  flashMsg.style.display = "none";
-  flashMsgContainer.style.display = "none";
-});
+if (document.querySelector(".flash-msg-container")) {
+  const flashMsg = document.querySelector(".flash-msg");
+  const flashMsgContainer = document.querySelector(".flash-msg-container");
+  flashMsgContainer.addEventListener("click", () => {
+    flashMsg.style.display = "none";
+    flashMsgContainer.style.display = "none";
+  });
+}
 
 // Image carousel
 if (slug.length === 24) {
@@ -119,3 +121,47 @@ if (slug.length === 24) {
     e.preventDefault();
   });
 }
+
+document.body.onload = addContent
+
+function addContent() {
+  const content = document.createTextNode(`
+    <% for(let i = page; i < pagination; i++) { %>
+      <a class="card-anchor" href="/campgrounds/<%= campgrounds[i]._id %>">
+        <li class="card">
+          <figure class="card-image-container">
+            <% if(campgrounds[i].images[0].url) { %>
+            <img
+              class="card-image"
+              src="<%= campgrounds[i].images[0].url %>"
+              alt=""
+            />
+            <% } %>
+          </figure>
+          <div class="card-content">
+            <h2><%= campgrounds[i].title %></h2>
+            <p><%= campgrounds[i].description %></p>
+            <br />
+            <p>£<%= campgrounds[i].price %> per night</p>
+          </div>
+        </li>
+      </a>
+      <% } %>`);
+  cardContainer.appendChild(content);
+  document.body.insertBefore(cardContainer)
+};
+
+const cardContainer = document.querySelector(".card-container");
+
+const next = document.querySelector("#next-page");
+let pagination = 10;
+let increment = pagination;
+let page = 0;
+
+const nextPage = () => {
+  page++;
+  pagination += increment;
+  console.log(page, pagination);
+  addContent
+}
+next.addEventListener("click", nextPage);
