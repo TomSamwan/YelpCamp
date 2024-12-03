@@ -13,7 +13,6 @@
 
   <ul class="card-container">
     <% for(let campground of campgrounds) { %>
-      <% for(let i = 0; i < 5; i++) { %>
     <a class="card-anchor" href="/campgrounds/<%= campground._id %>">
       <li class="card">
         <figure class="card-image-container">
@@ -34,10 +33,23 @@
       </li>
     </a>
     <% } %>
-    <% } %>
-
-    <button id="next-page">></button>
   </ul>
+  <div class="pagination-controls">
+    <% if(page === 1) { %>
+      <p class="page-number"><%= page %></p>
+      <a class="page-to next-page" href="/campgrounds?page=<%= (page + 1) %>">></a>
+    <% } else if ( page === totalPages) { %>
+      <a class="page-to prev-page" href="/campgrounds?page=<%= (page - 1) %>"><</a>
+      <p class="page-number"><%= page %></p>
+    <% } else if ( page > 1 && page < totalPages ){ %>
+      <a class="page-to prev-page" href="/campgrounds?page=<%= (page - 1) %>"><</a>
+      <p class="page-number"><%= page %></p>
+      <a class="page-to next-page" href="/campgrounds?page=<%= (page + 1) %>">></a>
+    <% } %>
+  </div>
+  <% if (page < 1 || page > totalPages) { %>
+    <h2 >Sorry you have exceeded the number or pages!</h2>
+  <% } %>
 </section>
 
 <script>
