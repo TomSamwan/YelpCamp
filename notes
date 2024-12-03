@@ -20,12 +20,12 @@ LOGIN/REGISTER PAGE/S
 - add some styling to both pages.
 - possibly combine into one page???
 
-- add pagination to index page
+# add pagination to index page
 
 
 ( nice to haves )
 
-- add a favicon
+# add a favicon
 
 HOME PAGE
 # add background image
@@ -39,61 +39,3 @@ OTHERS
 # in "edit" & "new" pages, form inputs will resize when window is resized
 
 # added a hover effect on the flash messages
-
-
-<!-- <'% for(let campground of campgrounds) { %> -->
-<!-- <a class="card-anchor" href="/campgrounds/<%= campground._id %>">
-  <li class="card">
-    <figure class="card-image-container">
-      <% if(campground.images[0].url) { %>
-      <img
-        class="card-image"
-        src="<%= campground.images[0].url %>"
-        alt=""
-      />
-      <% } %>
-    </figure>
-    <div class="card-content">
-      <h2><%= campground.title %></h2>
-      <p><%= campground.description %></p>
-      <br />
-      <p>£<%= campground.price %> per night</p>
-    </div>
-  </li>
-</a> -->
-
-
-<!-- <% const next = document.querySelector("#next-page"); %>
-<% let pagination = 5; %>
-<% let increment = pagination; %>
-<% let page = 0; %>
-
-<% const nextPage = () => { %>
-<% page++ %>
-<% pagination = pagination * page %>
-<% console.log(page, pagination); %>
-<% } %>
-  
-<% next.addEventListener("click", nextPage); %>
-
-<% for(let i = page; i < pagination; i++) { %>
-<a class="card-anchor" href="/campgrounds/<%= campgrounds[i]._id %>">
-  <li class="card">
-    <figure class="card-image-container">
-      <% if(campgrounds[i].images[0].url) { %>
-      <img
-        class="card-image"
-        src="<%= campgrounds[i].images[0].url %>"
-        alt=""
-      />
-      <% } %>
-    </figure>
-    <div class="card-content">
-      <h2><%= campgrounds[i].title %></h2>
-      <p><%= campgrounds[i].description %></p>
-      <br />
-      <p>£<%= campgrounds[i].price %> per night</p>
-    </div>
-  </li>
-</a>
-<% } %> -->

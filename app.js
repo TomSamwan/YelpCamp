@@ -4,6 +4,7 @@ if(process.env.NODE_ENV !== "production") {
 
 const express = require('express');
 const path = require('path');
+const favicon = require('serve-favicon')
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const ExpressError = require('./utils/ExpressError');
@@ -40,6 +41,7 @@ app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // set's the default views directory absolutely, so that it can be accessed from anywhere
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.urlencoded({ extended: true })); // allows the app to read and use request queries
 app.use(methodOverride('_method')); // enables deletion of database entries
 app.use(express.static(path.join(__dirname, '/public'))); // links any CSS or JS files absolutely
