@@ -183,6 +183,10 @@ footer {
   grid-template-columns: 1fr minmax(550px, 10fr) 1fr;
 }
 
+.grid-content-container {
+  scroll-margin-top: 80px;
+}
+
 .edit-content-container {
   grid-template-rows: auto auto auto;
 }
@@ -282,6 +286,10 @@ footer {
 .card-content h2 {
   text-decoration: underline var(--orange) 3px;
   margin-bottom: 16px;
+}
+
+.card-content p {
+  margin-bottom: 1rem;
 }
 
 /* pagination */

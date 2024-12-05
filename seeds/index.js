@@ -32,30 +32,22 @@ const seedDB = async () => {
           cities[random1000].latitude,
         ]
       },
+      defaultImage: {
+        url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1733416861/cliffside_kvzzpf_xaxwxn.jpg',
+        filename: 'cliffside'
+      },
       images: [
         {
-          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1730921320/rolling_hills_zbaxqh.jpg',
-          filename: 'rolling_hills_zbaxqh'
+          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1733416862/rolling_hills_zbaxqh_ghde0u.jpg',
+          filename: 'rolling_hills'
         },
         {
-          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1730574022/YELPCAMP/gymcurorp921q6qqh1he.jpg',
-          filename: 'gymcurorp921q6qqh1he'
+          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1733416861/rocky_outcrop_cv3qkm_nebajr.jpg',
+          filename: 'rocky_outcrop'
         },
         {
-          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1730921244/cliffside_kvzzpf.jpg',
-          filename: 'cliffside_kvzzpf'
-        },
-        {
-          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1731796575/Jungle_Bridge_lkonbk.jpg',
-          filename: 'Jungle_Bridge_lkonbk'
-        },
-        {
-          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1731796574/Liminal_Football_xfm6bl.jpg',
-          filename: 'Liminal_Football_xfm6bl'
-        },
-        {
-          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1731796574/Murky_Track_kfcuoz.jpg',
-          filename: 'Murky_Track_kfcuoz'
+          url: 'https://res.cloudinary.com/dmbtvzmaz/image/upload/v1733416861/maliaa8yev3mvt1xg32z_osc1tr.jpg',
+          filename: 'Surfers_Paradise'
         }
       ],
       description: 'lorem ipsum dolar sit lorem ipsum dolar sit lorem ipsum dolar sit lorem ipsum dolar sit.',

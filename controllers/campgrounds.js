@@ -7,16 +7,20 @@ module.exports.index = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
 
-  const startIndex = (page - 1) * limit;
-  const totalPages = await Campground.countDocuments() / limit;
+  const indexRange = page * limit;
+  const startIndex = indexRange - limit;
+  const totalPages = (await Campground.countDocuments()) / limit;
 
-  const campgrounds = await Campground.find().skip(startIndex).limit(limit);
+  const campgrounds = await Campground.find();
+  // const paginatedCampgrounds = await Campground.find().skip(startIndex).limit(limit);
 
   res.render("campgrounds/index", {
     campgrounds,
+    // paginatedCampgrounds,
     page,
     limit,
     startIndex,
+    indexRange,
     totalPages
   });
 };

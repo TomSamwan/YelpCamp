@@ -11,44 +11,14 @@
     <a class="ts-button add-button" href="/campgrounds/new">Add Campground</a>
   </div>
 
-  <ul class="card-container">
-    <% for(let campground of campgrounds) { %>
-    <a class="card-anchor" href="/campgrounds/<%= campground._id %>">
-      <li class="card">
-        <figure class="card-image-container">
-          <% if(campground.images[0].url) { %>
-          <img
-            class="card-image"
-            src="<%= campground.images[0].url %>"
-            alt=""
-          />
-          <% } %>
-        </figure>
-        <div class="card-content">
-          <h2><%= campground.title %></h2>
-          <p><%= campground.description %></p>
-          <br />
-          <p>£<%= campground.price %> per night</p>
-        </div>
-      </li>
-    </a>
-    <% } %>
-  </ul>
+  <ul class="card-container"></ul>
   <div class="pagination-controls">
-    <% if(page === 1) { %>
-      <p class="page-number"><%= page %></p>
-      <a class="page-to next-page" href="/campgrounds?page=<%= (page + 1) %>">></a>
-    <% } else if ( page === totalPages) { %>
-      <a class="page-to prev-page" href="/campgrounds?page=<%= (page - 1) %>"><</a>
-      <p class="page-number"><%= page %></p>
-    <% } else if ( page > 1 && page < totalPages ){ %>
-      <a class="page-to prev-page" href="/campgrounds?page=<%= (page - 1) %>"><</a>
-      <p class="page-number"><%= page %></p>
-      <a class="page-to next-page" href="/campgrounds?page=<%= (page + 1) %>">></a>
-    <% } %>
+    <button class="page-to prev-page"><</button>
+    <p class="page-number"><%= page %></p>
+    <button class="page-to next-page">></button>
   </div>
   <% if (page < 1 || page > totalPages) { %>
-    <h2 >Sorry you have exceeded the number or pages!</h2>
+  <h2>Sorry you have exceeded the number or pages!</h2>
   <% } %>
 </section>
 
@@ -56,5 +26,7 @@
   const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
   const campgrounds = { features: <%- JSON.stringify(campgrounds) %>}
 </script>
+
+<script src="/js/Pagination&render.js"></script>
 
 <script src="/js/clusterMap.js"></script>
