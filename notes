@@ -1,50 +1,33 @@
 ( CRITICAL )
 
-INDEX PAGE
-
-# CLUSTER & SINGLE MAP - when selecting campsite or using manual map controls, keep the map active (keep the activate-overlay hidden)
-
-# MAPS - fix scroll when hovering over popover
-
-# SHOW PAGE MAP - activate overlay when clicking outside of the map to the left or right
-
-# fix the flash message dismiss button
-
-### fix the routing issue after logging in where you sometimes end up at an error page or you don't end up back on the page your were on previously
 
 ( IMPORTANT )
 
-EDIT PAGE
-
-# style the 'delete-images' container so it doesn't overlap the footer
-
-# sort out the price container input ouline
-
-LOGIN/REGISTER PAGE/S
-
-# add some styling to both pages.
-# possibly combine into one page???
-
-# add pagination to index page
-# add pagination than doesn't refresh the whole page
+- fix the routing issue after logging in where you sometimes end up at an error page or you don't end up back on the page your were on previously
 - get req.queries working for pagination
+- add default image to newly created campgrounds if the user didn't upload any themselves
 
 ( nice to haves )
 
+
+
+### COMPLETED ###
+
+# CLUSTER & SINGLE MAP - when selecting campsite or using manual map controls, keep the map active (keep the activate-overlay hidden)
+# MAPS - fix scroll when hovering over popover
+# SHOW PAGE MAP - activate overlay when clicking outside of the map to the left or right
+# fix the flash message dismiss button
+# style the 'delete-images' container so it doesn't overlap the footer
+# sort out the price container input ouline
+# add some styling to both pages.
+# possibly combine into one page???
 # add a favicon
-
-HOME PAGE
-
+# add pagination to index page
+# add pagination than doesn't refresh the whole page
 # add background image
-
 # dark overlay
-
-OTHERS
-
 # style the boilerplate header and footer a bit nicer. i.e. change colours and button styling
-
 # fixed some inline script errors by putting the functions in the script.js files
-
 # in "edit" & "new" pages, form inputs will resize when window is resized
-
 # added a hover effect on the flash messages
+# update home page navbar to combine login and register links
