@@ -22,11 +22,12 @@ EDIT PAGE
 
 LOGIN/REGISTER PAGE/S
 
-- add some styling to both pages.
-- possibly combine into one page???
+# add some styling to both pages.
+# possibly combine into one page???
 
 # add pagination to index page
-# add AJAX pagination
+# add pagination than doesn't refresh the whole page
+- get req.queries working for pagination
 
 ( nice to haves )
 

@@ -41,6 +41,7 @@ span {
 }
 
 input[type="text"].form-input,
+input[type="password"].form-input,
 input[type="number"],
 .price-span,
 textarea.form-input {
@@ -177,7 +178,8 @@ footer {
 } */
 
 .grid-content-container,
-.edit-content-container {
+.edit-content-container,
+.login-content-container {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 1fr minmax(550px, 10fr) 1fr;
@@ -189,6 +191,11 @@ footer {
 
 .edit-content-container {
   grid-template-rows: auto auto auto;
+}
+
+.login-content-container {
+  grid-template-rows: 2fr auto 10fr;
+  min-height: calc(100vh - 205px);
 }
 
 .cluster-map-container {
@@ -563,9 +570,12 @@ label {
 
 .form-input {
   margin: 4px 0 0;
+  outline: none;
+  border: none;
 }
 
 input[type="text"].form-input,
+input[type="password"].form-input,
 textarea.form-input,
 div.price-span {
   display: inline-block;
@@ -574,6 +584,7 @@ div.price-span {
 }
 
 input[type="text"].form-input,
+input[type="password"].form-input,
 input[type="number"],
 textarea.form-input,
 div.price-span {
@@ -584,6 +595,7 @@ div.price-span {
 }
 
 input[type="text"].form-input.active,
+input[type="password"].form-input.active,
 textarea.form-input.active,
 div.price-span.active {
   transform: scale(1.005, 1.01);
@@ -830,7 +842,98 @@ div.price-span.active {
 }
 
 /* register & login */
-.register-container {
+.login-form-wrapper {
+  grid-area: 2/2;
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  color: var(--offwhite);
+  position: relative;
+}
+
+.login-form-container,
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-purple);
+  padding: 3rem 2rem 4rem;
+}
+
+.login-form-container {
+  grid-area: 1/1;
+  border-radius: 3rem 0 0 3rem;
+}
+.register-form-container {
   grid-area: 1/2;
-  margin: 100px 0;
+  border-radius: 0 3rem 3rem 0;
+}
+
+.login-form-container h1,
+.register-form-container h1 {
+  align-self: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-button {
+  font-size: 2rem;
+  padding: 0.25rem 2rem;
+  align-self: start;
+}
+
+
+
+.toggle-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 50%;
+  background: var(--bg-purple-darker);
+  border-radius: 0 3rem 3rem 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-slide:hover {
+  background: var(--bg-purple-focus);
+  color: var(--offwhite);
+}
+
+.toggle-slide:hover p {
+  color: var(--offwhite);
+  bottom: 40px;
+  scale: 1.05;
+}
+
+.toggle-slide.toggle {
+  left: 0;
+  border-radius: 3rem 0 0 3rem;
+}
+
+.toggle-slide p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: hsl(36, 35%, 69%);
+  position: relative;
+  bottom: 0;
+  transition: all 0.2s ease-out;
+}
+
+.toggle-slide p:nth-of-type(1)  {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+.toggle-slide p:nth-of-type(2)  {
+  font-size: 1.5rem;
+  margin-bottom: 4rem;
 }

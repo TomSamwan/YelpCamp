@@ -5,10 +5,6 @@ const passport = require('passport');
 const { storeReturnTo } = require('../middleware');
 const users = require('../controllers/users');
 
-router.route('/register')
-  .get(users.renderRegister)
-  .post(catchAsync(users.register));
-
 router.route('/login')
   .get(users.renderLogin)
   .post(storeReturnTo,
