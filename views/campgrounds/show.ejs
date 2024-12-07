@@ -29,10 +29,16 @@
         <div class="bubbles"></div>
         <% } %>
         <ul class="slides">
-          <% for(let img of campground.images) { %>
-          <li class="slide">
-            <img class="post-image" src="<%= img.url %>" alt="" />
-          </li>
+          <% if(campground.images.length !== 0) { %>
+            <% for(let img of campground.images) { %>
+              <li class="slide">
+                <img class="post-image" src="<%= img.url %>" alt="" />
+              </li>
+            <% } %>
+          <% } else { %>
+            <li class="slide">
+              <img class="post-image" src="<%= campground.defaultImage.url %>" alt="" />
+            </li>
           <% } %>
         </ul>
       </div>

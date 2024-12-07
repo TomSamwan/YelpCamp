@@ -5,21 +5,39 @@
   <div class="activate-overlay">click to activate</div>
 </div>
 
-<section class="grid-content-container">
+<section class="index-content-container">
   <div class="page-title-container">
     <h1 class="page-title">All Campgrounds</h1>
     <a class="ts-button add-button" href="/campgrounds/new">Add Campground</a>
   </div>
 
-  <ul class="card-container"></ul>
-  <div class="pagination-controls">
-    <button class="page-to prev-page"><</button>
-    <p class="page-number"><%= page %></p>
-    <button class="page-to next-page">></button>
+  <div class="index-content-wrapper">
+    <form
+      class="search-filter-form"
+      id="search-filter"
+      class="filter-container"
+    >
+      <div class="filter-input-container">
+        <label class="filter-input-label" for="location-filter">Location</label>
+        <input
+          class="filter-input"
+          id="location-filter"
+          type="search"
+          placeholder="Location"
+        />
+        <button class="search-button">Search</button>
+      </div>
+    </form>
+
+    <ul class="card-container"></ul>
+    <div class="pagination-controls">
+      <button class="page-to first-page"><<</button>
+      <button class="page-to prev-page"><</button>
+      <p class="page-number"><%= page %></p>
+      <button class="page-to next-page">></button>
+      <button class="page-to last-page">>></button>
+    </div>
   </div>
-  <% if (page < 1 || page > totalPages) { %>
-  <h2>Sorry you have exceeded the number or pages!</h2>
-  <% } %>
 </section>
 
 <script>

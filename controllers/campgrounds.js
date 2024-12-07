@@ -6,10 +6,11 @@ const { cloudinary } = require("../cloudinary");
 module.exports.index = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
+  
 
   const indexRange = page * limit;
   const startIndex = indexRange - limit;
-  const totalPages = (await Campground.countDocuments()) / limit;
+  const totalPages = Math.ceil((await Campground.countDocuments()) / limit);
 
   const campgrounds = await Campground.find();
   // const paginatedCampgrounds = await Campground.find().skip(startIndex).limit(limit);

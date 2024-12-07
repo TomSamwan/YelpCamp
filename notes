@@ -1,33 +1,54 @@
 ( CRITICAL )
 
+- fix the routing issue after logging in where you sometimes end up at an error page or you don't end up back on the page your were on previously
 
 ( IMPORTANT )
 
-- fix the routing issue after logging in where you sometimes end up at an error page or you don't end up back on the page your were on previously
-- get req.queries working for pagination
-- add default image to newly created campgrounds if the user didn't upload any themselves
+- show uploaded images when selected for upload (in "new" and "edit" pages)
+- needs more control over what page (pagination) you are on. up and down 1 page at a time ONLY is not a good experience.
 
 ( nice to haves )
 
 
+- MAPS - fix scroll when hovering over popover
+- fix the "back" button on the "show" page to actually go back to "all campgrounds"
+
 
 ### COMPLETED ###
 
-# CLUSTER & SINGLE MAP - when selecting campsite or using manual map controls, keep the map active (keep the activate-overlay hidden)
-# MAPS - fix scroll when hovering over popover
-# SHOW PAGE MAP - activate overlay when clicking outside of the map to the left or right
+[oldest changes]
+
 # fix the flash message dismiss button
-# style the 'delete-images' container so it doesn't overlap the footer
 # sort out the price container input ouline
-# add some styling to both pages.
 # possibly combine into one page???
-# add a favicon
-# add pagination to index page
-# add pagination than doesn't refresh the whole page
 # add background image
 # dark overlay
 # style the boilerplate header and footer a bit nicer. i.e. change colours and button styling
 # fixed some inline script errors by putting the functions in the script.js files
 # in "edit" & "new" pages, form inputs will resize when window is resized
 # added a hover effect on the flash messages
+
+# CLUSTER & SINGLE MAP - when selecting campsite or using manual map controls, keep the map active (keep the activate-overlay hidden)
+# style the 'delete-images' container so it doesn't overlap the footer
+# SHOW PAGE MAP - activate overlay when clicking outside of the map to the left or right
+
+# add a favicon
+
+# add pagination to index page
+# add pagination than doesn't refresh the whole page
+
+# add some styling to login/register page.
 # update home page navbar to combine login and register links
+
+# fix register form
+
+# fix the render issue when a new campground is created (currently only renders the purple "card" box with no details in it)
+# add default image to newly created campgrounds if the user didn't upload any themselves
+pagination
+# -- add some sort of search functionality?
+# -- get req.queries working for pagination
+
+
+
+[newest changes]
+
