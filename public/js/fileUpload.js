@@ -6,7 +6,3 @@ form.addEventListener("submit", () => {
   console.log("submitted");
   
 })
-
-// if(fileInput.files.length === 0 ) {
-//   console.log()
-// }
