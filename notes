@@ -1,5 +1,8 @@
 ( CRITICAL )
 
+- fix the maptiler geocoding endpoint issue when creating and updating campgrounds.
+  I think this has something to do with the new api key? maybe sending the wrong headers etc.
+
 - fix the routing issue after logging in where you sometimes end up at an error page or you don't end up back on the page your were on previously
 
 ( IMPORTANT )

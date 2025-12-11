@@ -12,7 +12,7 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
-const passportLocal = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 
@@ -21,7 +21,7 @@ const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 
-const MongoDBStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 const dbUrl = process.env.DB_URL;
 
 // connect to mongoDB
@@ -47,38 +47,40 @@ app.use(methodOverride("_method")); // enables deletion of database entries
 app.use(express.static(path.join(__dirname, "/public"))); // links any CSS or JS files absolutely
 app.use(mongoSanitize()); // adds security to injected query string accessing mongoDB
 
-const store = MongoDBStore.create({
-  mongoUrl: dbUrl,
-  touchAfter: 24 * 3600,
-  crypto: { secret: "megthedog" },
-});
+const secret = process.env.SECRET;
 
-store.on("error", function (e) {
-  console.log("ERROR:", e);
+const store = new MongoStore({
+  mongoUrl: dbUrl,
+  secret,
+  touchAfter: 24 * 60 * 60,
 });
 
 const day = 1000 * 60 * 60 * 24;
+
 const sessionConfig = {
   store,
-  name: "customSessionName",
-  secret: "megthedog",
+  name: "session",
+  secret,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: true,
+    // secure: true,
     expires: Date.now() + 7 * day,
     maxAge: 7 * day,
   },
 };
+
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(helmet());
 
 const scriptSrcUrls = [
   "https://stackpath.bootstrapcdn.com/",
   "https://kit.fontawesome.com/",
   "https://cdnjs.cloudflare.com/",
   "https://cdn.jsdelivr.net",
+  "https://api.maptiler.com/",
   "https://cdn.maptiler.com/",
 ];
 const styleSrcUrls = [
@@ -87,6 +89,7 @@ const styleSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://use.fontawesome.com/",
   "https://cdn.jsdelivr.net",
+  "https://api.maptiler.com/",
   "https://cdn.maptiler.com/",
 ];
 const connectSrcUrls = [
@@ -94,6 +97,7 @@ const connectSrcUrls = [
   "https://cdn.maptiler.com/",
 ];
 const fontSrcUrls = [];
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -118,15 +122,13 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new passportLocal(User.authenticate()));
+
+passport.use(new LocalStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-  if (!["/register", "/login"].includes(req.originalUrl)) {
-    req.session.returnTo = req.originalUrl;
-  }
   res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -142,12 +144,12 @@ app.get("/", (req, res) => {
 });
 
 app.all("*", (req, res, next) => {
-  next(new ExpressError("This is the ExpressError", 401));
+  next(new ExpressError("Page Not Found", 401));
 }); // error catch handler. (if all else fails, this route will run a custom ExpressError)
 
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
-  if (!err.message) err.message = "Default error message here!";
+  if (!err.message) err.message = "Something went wrong!";
   res.status(statusCode).render("error", { err });
 });
 
