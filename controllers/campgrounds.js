@@ -1,12 +1,11 @@
 const Campground = require("../models/campground");
 const maptilerClient = require("@maptiler/client");
 maptilerClient.config.apiKey = process.env.MAPTILER_API_KEY;
-const { cloudinary } = require("../cloudinary");
+const { cloudinary }  = require("../cloudinary");
 
 module.exports.index = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
-  
 
   const indexRange = page * limit;
   const startIndex = indexRange - limit;
@@ -22,7 +21,7 @@ module.exports.index = async (req, res) => {
     limit,
     startIndex,
     indexRange,
-    totalPages
+    totalPages,
   });
 };
 
@@ -37,10 +36,11 @@ module.exports.createCampground = async (req, res) => {
   );
   const campground = new Campground(req.body.campground);
   campground.geometry = geoData.features[0].geometry;
-  campground.images = req.files.map((f) => ({
-    url: f.path,
-    filename: f.filename,
-  }));
+  req.files.length &&
+    (campground.images = req.files.map((f) => ({
+      url: f.path,
+      filename: f.filename,
+    })));
   campground.author = req.user._id;
   await campground.save();
   req.flash("success", "Successfully made a new campground!");
