@@ -3,13 +3,15 @@ const router = express.Router();
 const catchAsync = require("../utils/catchAsync");
 const users = require("../controllers/users");
 const passport = require("passport");
+const { storeReturnTo } = require("../middleware");
 
-router.post("/register", catchAsync(users.register));
+router.post("/register", storeReturnTo, catchAsync(users.register));
 
 router
   .route("/login")
-  .get(users.renderLogin)
+  .get(storeReturnTo, users.renderLogin)
   .post(
+    storeReturnTo,
     passport.authenticate("local", {
       failureRedirect: "/login",
       failureFlash: true,

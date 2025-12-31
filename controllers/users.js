@@ -1,33 +1,32 @@
 const User = require("../models/user");
 
-module.exports.renderRegister = (req, res) => {
-  res.render("/register");
-};
-
-module.exports.register = async (req, res) => {
+module.exports.register = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = new User({ username });
+
     const registeredUser = await User.register(user, password);
-    req.login(registeredUser, (err) => {
-      err && next(err);
+    req.login(registeredUser, () => {
       req.flash("success", "Welcome to Yelp Camp!");
       res.redirect("/campgrounds");
     });
   } catch (e) {
     req.flash("error", e.message);
-    res.redirect("register");
+    res.redirect("/login");
   }
 };
 
 module.exports.renderLogin = (req, res) => {
+  console.dir(req.session)
   res.render("users/login");
 };
 
 module.exports.login = (req, res) => {
   const { username } = req.body;
   req.flash("success", `Welcome back ${username}!`);
-  res.redirect("./campgrounds");
+  const redirectUrl = res.locals.returnTo || "/campgrounds";
+  delete res.locals.returnTo;
+  res.redirect(redirectUrl);
 };
 
 module.exports.logout = (req, res, next) => {
