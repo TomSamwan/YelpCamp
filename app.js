@@ -56,6 +56,7 @@ const store = new MongoStore({
 });
 
 const day = 1000 * 60 * 60 * 24;
+const isProduction = process.env.NODE_ENV === "production"
 
 const sessionConfig = {
   store,
@@ -63,9 +64,11 @@ const sessionConfig = {
   secret,
   resave: false,
   saveUninitialized: false,
+  proxy: isProduction ? true : false,
   cookie: {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== "production" ? false : true,
+    secure: isProduction ? true : false,
+    sameSite: isProduction ? 'None' : 'Lax',
     expires: Date.now() + 7 * day,
     maxAge: 7 * day,
   },
